@@ -28,30 +28,73 @@ class Dog{
 class Bulldog: virtual public Dog{
     bool _friendly;
     public:
-
     Bulldog(int id,float weight,bool friendly=true):Dog(id,weight){
         _friendly=friendly;
+    }
+
+    protected:
+    virtual void printAdditionalFeatures(ostream& out){
+        out<<"friendly: "<<_friendly<<endl;
     }
 };
 
 class Poodle: virtual public Dog{
     bool _intelligent;
     public:
-
     Poodle(int id,float weight,bool intelligent=true):Dog(id,weight){
         _intelligent=intelligent;
+    }
+
+    protected:
+    virtual void printAdditionalFeatures(ostream& out){
+        out<<"intelligent: "<<_intelligent<<endl;
     }
 };
 
 class BulldogPoodle: public Poodle, public Bulldog{
     public:
-	// implement
+    BulldogPoodle(const Bulldog& bulldog, const Poodle& poodle):Dog(bulldog),Bulldog(bulldog),Poodle(poodle){}
+    protected:
+    virtual void printAdditionalFeatures(ostream& out){
+        Bulldog::printAdditionalFeatures(out);
+        Poodle::printAdditionalFeatures(out);
+    }
 };
 
 void saveDogs(Dog** dogs,int size,ofstream& out){
-	// implement
+    out<<size<<endl;
+    for(int i=0;i<size;i++){
+        out<<typeid(*dogs[i]).name()<<endl;
+        dogs[i]->print(out);
+    }
 }
 
 void loadDogs(Dog**& dogs,int& size,ifstream& in){
-	// implement
+    in>>size;
+    dogs=new Dog*[size];
+    char type[20],someText[20];
+    for(int i=0;i<size;i++){
+        in>>type;
+        int id;
+        float weight;
+        bool property;
+        in>>someText;
+        in>>id;
+        in>>someText;
+        in>>weight;
+        in>>someText;
+        in>>property;
+        if(type[0]=='7')
+            dogs[i]=new Bulldog(id,weight,property);
+        if(type[0]=='6')
+            dogs[i]=new Poodle(id,weight,property);
+        if(type[0]=='1'){
+            bool intelligent;
+            in>>someText;
+            in>>intelligent;
+            Bulldog* b=new Bulldog(id,weight,property);
+            Poodle* p=new Poodle(id,weight,intelligent);
+            dogs[i]=new BulldogPoodle(*b,*p);
+        }
+    }
 }
