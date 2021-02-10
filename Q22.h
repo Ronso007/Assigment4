@@ -28,24 +28,37 @@ class Dog{
 class Bulldog: virtual public Dog{
     bool _friendly;
     public:
-
     Bulldog(int id,float weight,bool friendly=true):Dog(id,weight){
         _friendly=friendly;
+    }
+
+    protected:
+    virtual void printAdditionalFeatures(ostream& out){
+        out<<"friendly: "<<_friendly<<endl;
     }
 };
 
 class Poodle: virtual public Dog{
     bool _intelligent;
     public:
-
     Poodle(int id,float weight,bool intelligent=true):Dog(id,weight){
         _intelligent=intelligent;
+    }
+
+    protected:
+    virtual void printAdditionalFeatures(ostream& out){
+        out<<"intelligent: "<<_intelligent<<endl;
     }
 };
 
 class BulldogPoodle: public Poodle, public Bulldog{
     public:
-	// implement
+    BulldogPoodle()
+    protected:
+    virtual void printAdditionalFeatures(ostream& out){
+        Bulldog::printAdditionalFeatures(out);
+        Poodle::printAdditionalFeatures(out);
+    }
 };
 
 void saveDogs(Dog** dogs,int size,ofstream& out){
