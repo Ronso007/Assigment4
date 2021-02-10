@@ -55,7 +55,7 @@ void test1(){
 }
 
 
-/*void test2(){
+void test2(){
     Dog** dogs=new Dog*[5];
     dogs[0]=new Bulldog(123,20);
     dogs[1]=new Bulldog(1234,20,false);
@@ -116,7 +116,7 @@ class Action2:public Delegate{
     };
 };
 
-void test3(){
+/*void test3(){
     sum=0;
     Event e;
     Action1* a1=new Action1();
@@ -144,7 +144,7 @@ void test3(){
 
 int main(){
 	test1();
-	//test2();
+	test2();
 	//test3();
 	cout << "done" << endl;
 	return 0;

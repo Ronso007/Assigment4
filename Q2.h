@@ -56,9 +56,43 @@ class BulldogPoodle: public Bulldog, public Poodle{
 };
 
 void saveDogs(Dog** dogs,int size,ofstream& out){
-	// implement
+    out<<size<<endl;
+    for(int i=0;i<size;i++){
+        out<<typeid(*dogs[i]).name()<<endl;
+        dogs[i]->print(out);
+    }
 }
 
 void loadDogs(Dog**& dogs,int& size,ifstream& in){
-	// implement
+	in >> size;
+	dogs = new Dog*[size];
+    char type[50], someText[50];
+    int id, weight;
+    bool boolValue;
+	for (int i = 0; i < size; i++) {
+        in.getline(type,sizeof(type));
+        in.getline(type,sizeof(type));
+        //in >> type;
+	    in >> someText;
+	    in >> id;
+        in >> someText;
+        in >> weight;
+        in >> someText;
+	    in >> boolValue;
+        if(type[6]=='P')
+        {
+            dogs[i]=new Poodle(id,weight,boolValue);
+        } else if (type[6] == 'B') {
+            if (type[13] != 'P') {
+                dogs[i]=new Bulldog(id,weight,boolValue);
+            } else {
+                in >> someText;
+                bool intelligent;
+                in >> intelligent;
+                Bulldog *b = new Bulldog(id, weight, boolValue);
+                Poodle *p = new Poodle(id, weight, intelligent);
+                dogs[i] = new BulldogPoodle(*b, *p);
+            }
+        }
+	}
 }
