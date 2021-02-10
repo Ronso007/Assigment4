@@ -25,13 +25,13 @@ class Dog{
     virtual void printAdditionalFeatures(ostream& out)=0;
 };
 // --------------------------------------- edit code from here on down -----------------------------
-class Bulldog:/* ??? */{
+/*class Bulldog:*//* ??? *//*{
     bool _friendly;
     public:
 	// implement
 };
 
-class Poodle: /* ??? */{
+class Poodle: *//* ??? *//*{
     bool _intelligent;
     public:
 	
@@ -39,10 +39,10 @@ class Poodle: /* ??? */{
     
 };
 
-class BulldogPoodle: /* ??? */{
+class BulldogPoodle: *//* ??? *//*{
     public:
 	// implement
-};
+};*/
 
 void saveDogs(Dog** dogs,int size,ofstream& out){
 	// implement

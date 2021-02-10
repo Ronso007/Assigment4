@@ -72,7 +72,7 @@ class BinTree{
                 size = 0;
             } else {
                 Item* i=root;
-                Item prev;
+                Item* prev;
                 while(i != NULL && i->number != number) {
                     prev = i;
                     if (number > i->number) {
@@ -83,10 +83,10 @@ class BinTree{
                 }
 
                 if (i != NULL) {
-                    if (prev.right == i) {
-                        prev.right == NULL;
+                    if (prev->right == i) {
+                        prev->right = NULL;
                     } else {
-                        prev.left == NULL;
+                        prev->left = NULL;
                     }
                     delete i;
                 }
@@ -96,11 +96,15 @@ class BinTree{
 
     template<class func>
     void forEach(func f){
-        Item* i = root;
+        run(f,root);
+    }
+
+    template<class func>
+    void run(func f,Item* i){
         if(i!=NULL){
             f(i->number);
-            forEach(f,i->left);
-            forEach(f,i->right);
+            run(f,i->left);
+            run(f,i->right);
         }
     }
     

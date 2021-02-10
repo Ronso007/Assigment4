@@ -55,7 +55,7 @@ void test1(){
 }
 
 
-void test2(){
+/*void test2(){
     Dog** dogs=new Dog*[5];
     dogs[0]=new Bulldog(123,20);
     dogs[1]=new Bulldog(1234,20,false);
@@ -139,13 +139,13 @@ void test3(){
 
     delete a1;
     delete a2;
-}
+}*/
 
 
 int main(){
 	test1();
-	test2();
-	test3();
+	//test2();
+	//test3();
 	cout << "done" << endl;
 	return 0;
 }
