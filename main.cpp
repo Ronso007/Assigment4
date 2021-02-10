@@ -116,7 +116,7 @@ class Action2:public Delegate{
     };
 };
 
-/*void test3(){
+void test3(){
     sum=0;
     Event e;
     Action1* a1=new Action1();
@@ -139,13 +139,13 @@ class Action2:public Delegate{
 
     delete a1;
     delete a2;
-}*/
+}
 
 
 int main(){
 	test1();
 	test2();
-	//test3();
+	test3();
 	cout << "done" << endl;
 	return 0;
 }
