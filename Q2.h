@@ -25,24 +25,35 @@ class Dog{
     virtual void printAdditionalFeatures(ostream& out)=0;
 };
 // --------------------------------------- edit code from here on down -----------------------------
-/*class Bulldog:*//* ??? *//*{
+class Bulldog: virtual public Dog{
     bool _friendly;
     public:
-	// implement
+	Bulldog(int id,float weight, bool friendly = true):Dog(id,weight), _friendly(friendly) {}
+protected:
+    virtual void printAdditionalFeatures(ostream& out){
+        out<<"Friendly "<<_friendly<<endl;
+    }
 };
 
-class Poodle: *//* ??? *//*{
+class Poodle: virtual public Dog{
     bool _intelligent;
     public:
-	
-	// implement
-    
+
+    Poodle(int id,float weight, bool intelligent = true):Dog(id,weight), _intelligent(intelligent) {}
+protected:
+    virtual void printAdditionalFeatures(ostream& out){
+        out<<"Intelligent "<<_intelligent<<endl;
+    }
 };
 
-class BulldogPoodle: *//* ??? *//*{
+class BulldogPoodle: public Bulldog, public Poodle{
     public:
-	// implement
-};*/
+    BulldogPoodle(const Bulldog& bulldog, const Poodle& poodle):Dog(bulldog),Bulldog(bulldog),Poodle(poodle){}
+    virtual void printAdditionalFeatures(ostream& out){
+        Bulldog::printAdditionalFeatures(out);
+        Poodle::printAdditionalFeatures(out);
+    }
+};
 
 void saveDogs(Dog** dogs,int size,ofstream& out){
 	// implement
