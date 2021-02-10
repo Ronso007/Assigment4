@@ -47,14 +47,22 @@ class BinTree{
             root->number = number;
         }
         else {
-            while (root->left != null && root->right != null) {
-                if (root->number < number && root->left != null) {
-                    root = root->left;
-                } else if (root->number > number && root->right != null) {
-                    root = root->right;
+            Item* i=root;
+            while (i->left != null && i->right != null) {
+                if (i->number < number && i->left != null) {
+                    i = i->left;
+                } else if (i->number > number && i->right != null) {
+                    i = i->right;
                 }
             }
+
+            Item* newItem = new Item();
+            newItem.number = number;
+            if(number< i->number) i->left=t;
+            if(number> i->number) i->right=t;
         }
+
+        size++;
     }
 	
     // any templates?
