@@ -47,7 +47,13 @@ class BinTree{
             root->number = number;
         }
         else {
-
+            while (root->left != null && root->right != null) {
+                if (root->number < number && root->left != null) {
+                    root = root->left;
+                } else if (root->number > number && root->right != null) {
+                    root = root->right;
+                }
+            }
         }
     }
 	
