@@ -13,8 +13,20 @@ class Delegate{
 };
 
 class Event{
-	// implement
+    list<Delegate*> actions;
+public:
+
+    Event& operator+=(Delegate* d){
+        actions.push_back(d);
+        return *this;
+    }
+
+    void operator()(){
+        list<Delegate*>::iterator it=actions.begin();
+        while(it!=actions.end()){
+            Delegate* d=*it;
+            (*d)();
+            it++;
+        }
+    }
 };
-
-
-
