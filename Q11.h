@@ -49,6 +49,7 @@ class BinTree{
         else {
             Item* i=root;
             while (i->left != null && i->right != null) {
+                //למה עשית פה לולאה?
                 if (i->number < number && i->left != null) {
                     i = i->left;
                 } else if (i->number > number && i->right != null) {
@@ -77,7 +78,7 @@ class BinTree{
                 i->left == null;
                 delete i;
             }
-            if (i->number < number && i->left != null) {
+            else if (i->number < number && i->left != null) {
                 i = i->left;
             } else if (i->number > number && i->right != null) {
                 i = i->right;
