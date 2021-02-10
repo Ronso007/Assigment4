@@ -43,7 +43,12 @@ class BinTree{
    
 	// any templates?
     void insert(Num number){
-		// implement
+        if(size==0) {
+            root->number = number;
+        }
+        else {
+
+        }
     }
 	
     // any templates?
