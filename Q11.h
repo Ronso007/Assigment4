@@ -67,7 +67,22 @@ class BinTree{
 	
     // any templates?
     void deleteSubTree(Num number){
-		// implement
+        Item* i=root;
+        bool found = false;
+        //אין לי מושג מה עשיתי פה
+        while (i->left != null && i->right != null && !found) {
+            if (i->number == number) {
+                found = true;
+                i->right == null;
+                i->left == null;
+                delete i;
+            }
+            if (i->number < number && i->left != null) {
+                i = i->left;
+            } else if (i->number > number && i->right != null) {
+                i = i->right;
+            }
+        }
     }
     // any templates?
     void forEach(/* parameters? */){
