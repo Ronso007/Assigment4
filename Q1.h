@@ -43,11 +43,18 @@ class BinTree{
    
 	// any templates?
     void insert(Num number){
-		if (root->left == NULL && root->right == NULL) {
-		    root->number = number;
-		} else {
-
-		}
+        if(size==0){
+            root->number=number;
+        } else{
+            Item* i=root;
+            while(number< i->number && i->left!=NULL) i=i->left;
+            while(number> i->number && i->right!=NULL) i=i->right;
+            Item* t=new Item();
+            t->number=number;
+            if(number< i->number) i->left=t;
+            if(number> i->number) i->right=t;
+        }
+        size++;
     }
 	
     // any templates?
