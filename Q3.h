@@ -22,11 +22,11 @@ public:
     }
 
     void operator()(){
-        list<Delegate*>::iterator it=actions.begin();
-        while(it!=actions.end()){
-            Delegate* d=*it;
-            (*d)();
-            it++;
+        list<Delegate*>::iterator itr=actions.begin();
+        while(itr!=actions.end()){
+            Delegate* delegate=*itr;
+            (*delegate)();
+            itr++;
         }
     }
 };
