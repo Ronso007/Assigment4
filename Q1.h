@@ -47,8 +47,14 @@ class BinTree{
             root->number=number;
         } else{
             Item* i=root;
-            while(number< i->number && i->left!=NULL) i=i->left;
-            while(number> i->number && i->right!=NULL) i=i->right;
+            while(i->left!=NULL && i->right!=NULL) {
+                while (number < i->number && i->left != NULL) {
+                    i = i->left;
+                }
+                while (number > i->number && i->right != NULL) {
+                    i = i->right;
+                }
+            }
             Item* t=new Item();
             t->number=number;
             if(number< i->number) i->left=t;
@@ -59,8 +65,35 @@ class BinTree{
 	
     // any templates?
     void deleteSubTree(Num number){
-		// implement
+        if(size!=0) {
+            if (root->number == number) {
+                delete root;
+                root = new Item();
+                size = 0;
+            } else {
+                Item* i=root;
+                Item prev;
+                while(i != NULL && i->number != number) {
+                    prev = i;
+                    if (number > i->number) {
+                        i = i->right;
+                    } else {
+                        i = i-> left;
+                    }
+                }
+
+                if (i != NULL) {
+                    if (prev.right == i) {
+                        prev.right == NULL;
+                    } else {
+                        prev.left == NULL;
+                    }
+                    delete i;
+                }
+            }
+        }
     }
+
     // any templates?
     void forEach(/* parameters? */){
         // implement
