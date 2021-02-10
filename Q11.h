@@ -85,9 +85,15 @@ class BinTree{
             }
         }
     }
-    // any templates?
-    void forEach(/* parameters? */){
-        // implement
+
+    template<class func>
+    void forEach(func f){
+        Item* i = root;
+        if(i!=NULL){
+            f(i->number);
+            f(f,i->left);
+            f(f,i->right);
+        }
     }
     
     
