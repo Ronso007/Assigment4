@@ -25,21 +25,25 @@ class Dog{
     virtual void printAdditionalFeatures(ostream& out)=0;
 };
 // --------------------------------------- edit code from here on down -----------------------------
-class Bulldog:/* ??? */{
+class Bulldog: virtual public Dog{
     bool _friendly;
     public:
-	// implement
+
+    Bulldog(int id,float weight,bool friendly=true):Dog(id,weight){
+        _friendly=friendly;
+    }
 };
 
-class Poodle: /* ??? */{
+class Poodle: virtual public Dog{
     bool _intelligent;
     public:
-	
-	// implement
-    
+
+    Poodle(int id,float weight,bool intelligent=true):Dog(id,weight){
+        _intelligent=intelligent;
+    }
 };
 
-class BulldogPoodle: /* ??? */{
+class BulldogPoodle: public Poodle, public Bulldog{
     public:
 	// implement
 };
